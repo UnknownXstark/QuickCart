@@ -18,3 +18,8 @@ class Product:
         self.name = name
         self.price = price
         self.stock = stock
+
+class OrderStatus(Enum):
+    PENDING = "Pending"
+    ACCEPTED = "Accepted"
+    DELIVERED = "Delivered"
