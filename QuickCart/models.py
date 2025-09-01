@@ -32,3 +32,8 @@ class Order:
         self.status = OrderStatus.PENDING
         self.timestamp = datetime.now()
         self.rider = None
+
+class Rider(User):
+    def __init__(self, username, password, role=Role.USER):
+        super().__init__(username, password, role.RIDER)
+        self.assigned_orders = []
