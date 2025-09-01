@@ -11,3 +11,7 @@ class Product:
         self.name = name
         self.price = price
         self.stock = stock
+
+    def __str__(self):
+        return f"{self.name} - ${self.price:.2f} (stock: {self.stock})"
+
