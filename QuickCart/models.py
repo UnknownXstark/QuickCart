@@ -23,3 +23,12 @@ class OrderStatus(Enum):
     PENDING = "Pending"
     ACCEPTED = "Accepted"
     DELIVERED = "Delivered"
+
+class Order:
+    def __init__(self, user, product, quantity):
+        self.user = user
+        self.product = product
+        self.quantity = quantity
+        self.status = OrderStatus.PENDING
+        self.timestamp = datetime.now()
+        self.rider = None
