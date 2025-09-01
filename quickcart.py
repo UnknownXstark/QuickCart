@@ -21,3 +21,7 @@ class Order:
         self.user_id = user_id
         self.product = product
         self.quantity = quantity
+        self.status = OrderStatus.PENDING
+    
+    def __str__(self):
+        return f"{self.order_id}: {self.product.name}"
