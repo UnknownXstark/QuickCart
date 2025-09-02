@@ -63,3 +63,5 @@ def riders_menu(rider):
             idx = int(input("Choose order indexx: "))
             rider_accept_order(rider, orders[idx])
             print("Order accepted!")
+        elif choice == "2":
+            
