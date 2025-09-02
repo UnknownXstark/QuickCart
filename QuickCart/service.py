@@ -8,4 +8,8 @@ def register(username, password, role=Role.USER):
     if any(u.username == username for u in users):
         return None
     if role == Role.RIDER:
-        
+        user = Rider(username, password)
+    else:
+        user = User(username, password, role)
+        users.append(user)
+        return user
