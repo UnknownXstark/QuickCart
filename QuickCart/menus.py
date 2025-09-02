@@ -31,7 +31,18 @@ def user_menu(user):
 
         if choice == "1":
             for p in list_products():
-                print(f"{p.name} - ${p.price} {stock: {p.stock}}")
+                print(f"{p.name} - ${p.price} (Stock: {p.stock})")
         
         elif choice == "2":
-            
+            name = input("Product name: ")
+            qty = int(input("Quantity: "))
+            order = place_order(user, name, qty)
+            if order:
+                print("Order placed!")
+            else:
+                print("Order failed (not enough stock).")
+        elif choice == "3":
+            for o in user.orders:
+                print(f"{o.product.name} x{o.quantity} [{o.status.value}]")
+        elif choice == "4":
+            break
