@@ -24,3 +24,10 @@ def add_product(name, price, stock):
     product = Product(name, price, stock)
     products.append(product)
     return product
+
+def list_products():
+    return products
+
+def place_order(user, product_name, quantity):
+    for product in products:
+        
