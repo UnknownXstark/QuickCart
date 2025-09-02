@@ -45,3 +45,9 @@ def rider_accept_order(rider, order):
         rider.assigned_orders.append(order)
         return True
     return False
+
+def rider_deliver_order(rider, order):
+    if order in rider.assigned_orders and order.status == order.status.ACCEPTED:
+        order.status = order.status.DELIVERED
+        return True
+    return False
