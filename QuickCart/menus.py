@@ -50,11 +50,16 @@ def user_menu(user):
 def riders_menu(rider):
     while True:
         print("\n-- Riders Menu --")
-        print("1. ")
-        print("2. ")
-        print("3. ")
+        print("1. Accept Order")
+        print("2. Deliver Order")
+        print("3. My Orders")
         print("4. Logout")
         choice = input("Choose: ")
 
         if choice == "1":
-            
+            for i, o in enumerate(orders):
+                if o.status == o.status.PENDING:
+                    print(f"{i}.{o.user.username} ordered {o.producut.name} x{o.quantity}")
+            idx = int(input("Choose order indexx: "))
+            rider_accept_order(rider, orders[idx])
+            print("Order accepted!")
