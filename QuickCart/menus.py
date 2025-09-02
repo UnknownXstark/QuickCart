@@ -28,3 +28,10 @@ def user_menu(user):
         print("3. My Orders")
         print("4. Logout")
         choice = input("Choose: ")
+
+        if choice == "1":
+            for p in list_products():
+                print(f"{p.name} - ${p.price} {stock: {p.stock}}")
+        
+        elif choice == "2":
+            
