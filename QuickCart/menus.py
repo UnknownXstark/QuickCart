@@ -70,3 +70,8 @@ def riders_menu(rider):
             idx = int(input("Choose order index: "))
             rider_deliver_order(rider, rider.assigned_orders[idx])
             print("Order delivered!")
+        elif choice == "3":
+            for o in rider.assigned_orders:
+                print(f"{o.product.name} [{o.status.value}]")
+        elif choice == "4":
+            break
