@@ -1,4 +1,4 @@
-from services import *
+from service import *
 
 def admin_menu(admin):
     while True:
