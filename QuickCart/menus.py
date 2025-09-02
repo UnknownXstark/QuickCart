@@ -19,3 +19,12 @@ def admin_menu(admin):
                 print(f"{o.user.username} ordered {o.quantity} {o.product.name} [{o.status.value}]")
         elif choice == "3":
             break
+
+def user_menu(user):
+    while True:
+        print("\n-- User Menu --")
+        print("1. Browse Products")
+        print("2. Place Orders")
+        print("3. My Orders")
+        print("4. Logout")
+        choice = input("Choose: ")
