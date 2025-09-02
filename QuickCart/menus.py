@@ -60,8 +60,11 @@ def riders_menu(rider):
             for i, o in enumerate(orders):
                 if o.status == o.status.PENDING:
                     print(f"{i}.{o.user.username} ordered {o.producut.name} x{o.quantity}")
-            idx = int(input("Choose order indexx: "))
+            idx = int(input("Choose order index: "))
             rider_accept_order(rider, orders[idx])
             print("Order accepted!")
         elif choice == "2":
-            
+            for i, o in enumerate(orders):
+                if o.status == o.status.ACCEPTED:
+                    print(f"{i}.{o.producct.name} for {o.user.username}")
+            idx = int(input("Choose order index: "))
