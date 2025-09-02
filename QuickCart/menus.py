@@ -68,3 +68,5 @@ def riders_menu(rider):
                 if o.status == o.status.ACCEPTED:
                     print(f"{i}.{o.producct.name} for {o.user.username}")
             idx = int(input("Choose order index: "))
+            rider_deliver_order(rider, rider.assigned_orders[idx])
+            print("Order delivered!")
