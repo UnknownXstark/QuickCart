@@ -37,3 +37,11 @@ def place_order(user, product_name, quantity):
             user.orders.append(order)
             return order
         return None
+    
+def rider_accept_order(rider, order):
+    if order.status == order.status.PENDING:
+        order.status = order.status.ACCEPTED
+        order.rider = rider
+        rider.assigned_orders.append(order)
+        return True
+    return False
