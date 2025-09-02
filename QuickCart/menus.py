@@ -46,3 +46,15 @@ def user_menu(user):
                 print(f"{o.product.name} x{o.quantity} [{o.status.value}]")
         elif choice == "4":
             break
+
+def riders_menu(rider):
+    while True:
+        print("\n-- Riders Menu --")
+        print("1. ")
+        print("2. ")
+        print("3. ")
+        print("4. Logout")
+        choice = input("Choose: ")
+
+        if choice == "1":
+            
