@@ -30,4 +30,10 @@ def list_products():
 
 def place_order(user, product_name, quantity):
     for product in products:
-        
+        if product.name == product_name and product.stock >= quantity:
+            product.stock -= quantity
+            order = Order(user, product, quantity)
+            orders.append(order)
+            user.orders.append(order)
+            return order
+        return None
