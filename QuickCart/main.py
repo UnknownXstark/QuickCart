@@ -15,7 +15,7 @@ while True:
         username = input("Username: ")
         password = input("Password: ")
         role_choice = input("Role (user/rider): ").lower()
-        role = Role.USER if role_choice == "User" else Role.RIDER
+        role = Role.USER if role_choice == "user" else Role.RIDER
         user = register(username, password, role)
         if user:
             print("Registered succesfully!")
