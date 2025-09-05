@@ -67,8 +67,26 @@ class Order:
             "timestamp": self.timestamp,
             "rider": self.rider if not isinstance(self.rider, User) else self.rider.username
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+        order = cls(data["user"], data["product"], data["quantity"])
+        order.status = OrderStatus(data["status"])
+        order.timestamp = data["timestamp"]
+        order.rider = data["rider"]
+        return order
 
 class Rider(User):
     def __init__(self, username, password, role=Role.USER):
         super().__init__(username, password, role.RIDER)
         self.assigned_orders = []
+
+    def to_dict(self):
+        base = super().to_dict()
+        base["assigned_orders"] = [o.to_dict() for o in self.assigned_orders]
+        return base
+    
+    @classmethod
+    def from_dict(cls, data):
+        rider = cls(data["username"], data["password"])
+        return rider
