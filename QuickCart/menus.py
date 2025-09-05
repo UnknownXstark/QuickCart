@@ -66,7 +66,7 @@ def rider_menu(rider):
         elif choice == "2":
             for i, o in enumerate(orders):
                 if o.status == o.status.ACCEPTED:
-                    print(f"{i}.{o.producct.name} for {o.user.username}")
+                    print(f"{i}.{o.product.name} for {o.user.username}")
             idx = int(input("Choose order index: "))
             rider_deliver_order(rider, rider.assigned_orders[idx])
             print("Order delivered!")

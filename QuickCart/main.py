@@ -33,4 +33,4 @@ while True:
             elif user.role == Role.USER:
                 user_menu(user)
             elif user.role == Role.RIDER:
-                rider_menu
+                riders_menu
