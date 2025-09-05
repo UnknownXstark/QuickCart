@@ -18,7 +18,7 @@ class User:
             "username": self.username,
             "password": self.password,
             "role": self.role.value,
-            "orders": [o.to_dict() for o in self.orders] if self.orders else []
+            "orders": [o.to_dict() for o in self.orders]
         }
     
     @classmethod

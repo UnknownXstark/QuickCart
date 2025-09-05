@@ -1,9 +1,14 @@
 from models import User, Rider, Product, Order, Role
 from storage import load_data, save_data
 
-users = [User(**u) for u in load_data("users.json")]
-products = [Product(**p) for p in load_data("products.json")]
-orders = [Order(**o) for o in load_data("orders.json")]
+users = [User.from_dict(u) for u in load_data("users.json")]
+products = [Product.from_dict(p) for p in load_data("products.json")]
+orders = [Order.from_dict(o) for o in load_data("orders.json")]
+
+def save_all():
+    save_data([u.to_dict() for u in users], "users.json")
+    save_data([p.to_dict() for p in products], "products.json")
+    save_data([o.to_dict() for o in orders], "orders.json")
 
 def register(username, password, role=Role.USER):
     if any(u.username == username for u in users):
