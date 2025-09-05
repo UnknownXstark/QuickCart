@@ -60,7 +60,12 @@ class Order:
 
     def to_dict(self):
         return {
-            
+            "user": self.user,
+            "product": self.product,
+            "quantity": self.status.value,
+            "status": self.status.value,
+            "timestamp": self.timestamp,
+            "rider": self.rider if not isinstance(self.rider, User) else self.rider.username
         }
 
 class Rider(User):
