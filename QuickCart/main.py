@@ -1,8 +1,11 @@
 from service import register, login
 from menus import admin_menu, user_menu, rider_menu
+from storage import load_data
 from models import Role
 
-register("admin", "admin", Role.ADMIN)
+# Only register admin if no users exist
+if not load_data("users.json"):
+    register("admin", "admin", Role.ADMIN)
 
 while True:
     print("\n--- QuickCart ---")
@@ -15,12 +18,15 @@ while True:
         username = input("Username: ")
         password = input("Password: ")
         role_choice = input("Role (user/rider): ").lower()
-        role = Role.USER if role_choice == "user" else Role.RIDER
-        user = register(username, password, role)
-        if user:
-            print("Registered succesfully!")
-        else:
-            print("Username already exists.")
+        try:
+            role = Role.USER if role_choice == "user" else Role.RIDER
+            user = register(username, password, role)
+            if user:
+                print("Registered successfully!")
+            else:
+                print("Username already exists.")
+        except ValueError:
+            print("Invalid role. Please choose 'user' or 'rider'.")
     elif choice == "2":
         username = input("Username: ")
         password = input("Password: ")

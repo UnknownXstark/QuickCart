@@ -7,6 +7,6 @@ def save_data(data, filename):
 
 def load_data(filename):
     if not os.path.exists(filename):
-        return[]
+        return []
     with open(filename, "r") as f:
         return json.load(f)

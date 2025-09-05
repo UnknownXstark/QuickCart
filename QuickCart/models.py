@@ -18,7 +18,6 @@ class User:
             "username": self.username,
             "password": self.password,
             "role": self.role.value,
-            "orders": [o.to_dict() for o in self.orders]
         }
     
     @classmethod
@@ -62,7 +61,7 @@ class Order:
         return {
             "user": self.user,
             "product": self.product,
-            "quantity": self.status.value,
+            "quantity": self.quantity,
             "status": self.status.value,
             "timestamp": self.timestamp,
             "rider": self.rider if not isinstance(self.rider, User) else self.rider.username
@@ -77,14 +76,12 @@ class Order:
         return order
 
 class Rider(User):
-    def __init__(self, username, password, role=Role.USER):
-        super().__init__(username, password, role.RIDER)
+    def __init__(self, username, password, role=Role.RIDER):
+        super().__init__(username, password, role)
         self.assigned_orders = []
 
     def to_dict(self):
-        base = super().to_dict()
-        base["assigned_orders"] = [o.to_dict() for o in self.assigned_orders]
-        return base
+        return super().to_dict()
     
     @classmethod
     def from_dict(cls, data):
