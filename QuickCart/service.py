@@ -18,7 +18,7 @@ def register(username, password, role=Role.USER):
     else:
         user = User(username, password, role)
     users.append(user)
-    save_data([u.__dict__ for u in users], "users.json")
+    save_all()
     return user
     
 def login(username, password):
@@ -30,7 +30,7 @@ def login(username, password):
 def add_product(name, price, stock):
     product = Product(name, price, stock)
     products.append(product)
-    save_data([p.__dict__ for p in products], "products.json")
+    save_all()
     return product
 
 def list_products():
@@ -43,8 +43,7 @@ def place_order(user, product_name, quantity):
             order = Order(user, product, quantity)
             orders.append(order)
             user.orders.append(order)
-            save_data([p.__dict__ for p in products], "products.json")
-            save_data([o.__dict__ for o in orders], "orders.json")
+            save_all()
             return order
     return None
     
@@ -53,13 +52,13 @@ def rider_accept_order(rider, order):
         order.status = order.status.ACCEPTED
         order.rider = rider
         rider.assigned_orders.append(order)
-        save_data([o.__dict__ for o in orders], "orders.json")
+        save_all()
         return True
     return False
 
 def rider_deliver_order(rider, order):
     if order in rider.assigned_orders and order.status == order.status.ACCEPTED:
         order.status = order.status.DELIVERED
-        save_data([o.__dict__ for o in orders], "orders.jsoon")
+        save_all()
         return True
     return False
