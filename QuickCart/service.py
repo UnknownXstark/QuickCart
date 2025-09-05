@@ -19,7 +19,7 @@ def login(username, password):
     for user in users:
         if user.username == username and user.password == password:
             return user
-        return None
+    return None
     
 def add_product(name, price, stock):
     product = Product(name, price, stock)
