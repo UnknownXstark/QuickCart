@@ -10,3 +10,10 @@ while True:
     print("2. Login")
     print("3. Exit")
     choice = input("Choose: ")
+
+    if choice == "1":
+        username = input("Username: ")
+        password = input("Password: ")
+        role_choice = input("Role (user/rider): ").lower()
+        role = Role.USER if role_choice == "User" else Role.RIDER
+        user = register(username, password, role)
