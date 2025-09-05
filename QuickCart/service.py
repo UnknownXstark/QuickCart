@@ -48,8 +48,8 @@ def place_order(user, product_name, quantity):
     return None
     
 def rider_accept_order(rider, order):
-    if order.status == order.status.PENDING:
-        order.status = order.status.ACCEPTED
+    if order.status == Order.status.PENDING:
+        order.status = Order.status.ACCEPTED
         order.rider = rider
         rider.assigned_orders.append(order)
         save_all()
@@ -57,7 +57,7 @@ def rider_accept_order(rider, order):
     return False
 
 def rider_deliver_order(rider, order):
-    if order in rider.assigned_orders and order.status == order.status.ACCEPTED:
+    if order in rider.assigned_orders and order.status == Order.status.ACCEPTED:
         order.status = order.status.DELIVERED
         save_all()
         return True
