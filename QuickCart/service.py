@@ -1,9 +1,9 @@
 from models import User, Rider, Product, Order, Role
 from storage import load_data, save_data
 
-users = []
-products = []
-orders = []
+users = [User(**u) for u in load_data("users.json")]
+products = [Product(**p) for p in load_data("products.json")]
+orders = [Order(**o) for o in load_data("orders.json")]
 
 def register(username, password, role=Role.USER):
     if any(u.username == username for u in users):
