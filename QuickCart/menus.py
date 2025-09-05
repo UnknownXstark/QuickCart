@@ -47,7 +47,7 @@ def user_menu(user):
         elif choice == "4":
             break
 
-def riders_menu(rider):
+def rider_menu(rider):
     while True:
         print("\n-- Riders Menu --")
         print("1. Accept Order")

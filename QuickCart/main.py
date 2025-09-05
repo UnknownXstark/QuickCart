@@ -17,3 +17,20 @@ while True:
         role_choice = input("Role (user/rider): ").lower()
         role = Role.USER if role_choice == "User" else Role.RIDER
         user = register(username, password, role)
+        if user:
+            print("Registered succesfully!")
+        else:
+            print("Username already exists.")
+    elif choice == "2":
+        username = input("Username: ")
+        password = input("Password: ")
+        user = login(username, password)
+        if not user:
+            print("Invalid credentials.")
+        else:
+            if user.role == Role.ADMIN:
+                admin_menu(user)
+            elif user.role == Role.USER:
+                user_menu(user)
+            elif user.role == Role.RIDER:
+                rider_menu
