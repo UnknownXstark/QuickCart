@@ -33,4 +33,7 @@ while True:
             elif user.role == Role.USER:
                 user_menu(user)
             elif user.role == Role.RIDER:
-                riders_menu
+                rider_menu(user)
+    elif choice == "3":
+        print("Goodbye!")
+        break
