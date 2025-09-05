@@ -1,4 +1,5 @@
 from models import User, Rider, Product, Order, Role
+from storage import load_data, save_data
 
 users = []
 products = []
