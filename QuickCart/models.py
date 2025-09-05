@@ -12,12 +12,37 @@ class User:
         self.password = password
         self.role = role
         self.orders = []
+    
+    def to_dict(self):
+        return {
+            "username": self.username,
+            "password": self.password,
+            "role": self.role.value,
+            "orders": [o.to_dict() for o in self.orders] if self.orders else []
+        }
+    
+    @classmethod
+    def from_dict(cls, data):
+        role = Role(data["role"])
+        user = cls(data["username"], data["password"], role)
+        return user
 
 class Product:
     def __init__(self, name, price, stock=0):
         self.name = name
         self.price = price
         self.stock = stock
+
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "price": self.price,
+            "stock": self.stock
+        }
+    
+    @classmethod
+    def from_dict(cls, data):
+        return cls(data["name"], data["price"], data["stock"])
 
 class OrderStatus(Enum):
     PENDING = "Pending"
@@ -26,12 +51,17 @@ class OrderStatus(Enum):
 
 class Order:
     def __init__(self, user, product, quantity):
-        self.user = user
-        self.product = product
+        self.user = user.username if isinstance(user, User) else user
+        self.product = product.name if isinstance(product, Product) else product
         self.quantity = quantity
         self.status = OrderStatus.PENDING
-        self.timestamp = datetime.now()
+        self.timestamp = datetime.now().isoformat()
         self.rider = None
+
+    def to_dict(self):
+        return {
+            
+        }
 
 class Rider(User):
     def __init__(self, username, password, role=Role.USER):
