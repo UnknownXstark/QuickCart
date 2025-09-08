@@ -1,1 +1,18 @@
-[]
+[
+    {
+        "user": "tobi",
+        "product": "iphone 16",
+        "quantity": 2,
+        "status": "Pending",
+        "timestamp": "2025-09-05T14:05:08.843045",
+        "rider": null
+    },
+    {
+        "user": "tobi",
+        "product": "soap",
+        "quantity": 3,
+        "status": "Delivered",
+        "timestamp": "2025-09-05T14:05:21.746666",
+        "rider": "tom"
+    }
+]

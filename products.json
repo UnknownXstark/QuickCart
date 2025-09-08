@@ -1,1 +1,12 @@
-[]
+[
+    {
+        "name": "soap",
+        "price": 500.0,
+        "stock": 7
+    },
+    {
+        "name": "iphone 16",
+        "price": 1000000.0,
+        "stock": 8
+    }
+]
